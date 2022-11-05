@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package gateway.v1;
+option go_package = "gitlab.ozon.ru/agarkov/Route256/lectures/gRPC/api;apiv1";
+
+import "google/protobuf/wrappers.proto";
+
+// EchoRequest is the request for echo.
+message EchoRequest {
+  google.protobuf.StringValue message = 1;
+}
+
+// EchoResponse is the response for echo.
+message EchoResponse {
+  google.protobuf.StringValue message = 1;
+}
+
+// Echo is the echo service.
+service Echo {
+  // UnaryEcho is unary echo.
+  rpc UnaryEcho(EchoRequest) returns (EchoResponse) {}
+}

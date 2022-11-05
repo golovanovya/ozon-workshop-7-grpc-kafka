@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package gateway.v1;
+option go_package = "gitlab.ozon.ru/agarkov/Route256/lectures/gRPC/gateway/api;api";
+
+import "google/api/annotations.proto";
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SendGet (TemplateRequest) returns (TemplateResponse) {
+    option (google.api.http).get = "/get";
+  }
+  rpc SendPost (TemplateRequest) returns (TemplateResponse) {
+    option (google.api.http) = {
+      post: "/post"
+      body: "*"
+    };
+  }
+}
+
+// The request message containing the user's name.
+message TemplateRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message TemplateResponse {
+  string message = 1;
+}

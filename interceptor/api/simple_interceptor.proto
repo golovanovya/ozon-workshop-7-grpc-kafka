@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package simple_interceptor;
+option go_package = "gitlab.ozon.ru/agarkov/Route256/lectures/gRPC/examples/simple_interceptor/api";
+
+service SimpleInterceptor {
+  rpc UserCheck(UserRequest) returns (UserResponse);
+}
+
+message UserRequest {
+  uint32 id = 1;
+  string login = 2;
+}
+
+message UserResponse {
+  bool valid = 1;
+}
